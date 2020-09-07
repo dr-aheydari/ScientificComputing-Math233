@@ -19,6 +19,6 @@ This repository may contain material that have been turned-in as an assignment o
 
 ## Contact Info:
 
-For any questions or concerns, please contact me via [email] (mailto:aliheydari@ucdavis.edu)
+For any questions or concerns, please contact me via [email](mailto:aliheydari@ucdavis.edu)
 
  
