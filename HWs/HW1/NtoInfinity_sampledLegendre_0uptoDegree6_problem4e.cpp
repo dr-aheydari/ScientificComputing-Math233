@@ -1,5 +1,7 @@
 #include <cmath>
 #include <iostream>
+
+
 // proto
 double Legendre(double x, int n);
 double* SampledLegendre(double a, double b, int N, int n);
@@ -12,31 +14,29 @@ double L6(double x);
 void SafetyCheck(int n);
 void SafeGaurd(int n);
 void DisplayArray(double* p, int N);
-
+double ScalarProduct(double *u, double* v, int N);
 int main()
 {   // set precision for cout
     std::cout.precision(32);
+    // checking to see what happens as N-> infty
     // initiailize
-    double a,b = 0;
-    int n,N = 0;
-    // we assume to need dynamic arrays (to make it more interesting)
-    std::cout<<"Legendre Polynomial Evaluator!" << std::endl;
-    std::cout<<"Enter start point of interval (a): " << std::endl;
-    std::cin >> a;
-    std::cout<<"Enter end point of interval (b): " << std::endl;
-    std::cin >> b;
-    std::cout<<"Enter number of partitions (N): " << std::endl;
-    std::cin >> N;
-    std::cout<<"Enter n for Legendre Polynomials (0 <= n <= 6): " << std::endl;
-    std::cin >> n;
+    double a = -1.;
+    double b = 1.;
+    int N = 1000;
+    int n = 2;
+    int m = 5;
     // check for correct degree
     SafetyCheck(n);
-    double *point = SampledLegendre(a, b, N, n);
-    // show results
-    DisplayArray(point, N);
+    SafetyCheck(m);
+    double *u = SampledLegendre(a, b, N, n);
+    double *v = SampledLegendre(a, b, N, m);
+    std::cout<<"Dot product: "<<ScalarProduct(u, v, N) << std::endl;
+
     // delete the pointer and point to null
-    delete[] point;
-    point = nullptr;
+    delete[] u;
+    delete[] v;
+    u = nullptr;
+    v = nullptr;
     return 0;
 }
 // defs
@@ -81,9 +81,7 @@ double* SampledLegendre(double a, double b, int N, int n)
     {
         L[i] = Legendre(curr_point,n);
         curr_point = curr_point + delta_t;
-
     }
-    std::cout<<"Done\n";
     return L;
 }
 
@@ -113,5 +111,14 @@ void DisplayArray(double* p, int N)
     {
         std::cout<<"Array["<<i<<"] ="<< *(p + i)<< std::endl;
     }
+}
+
+
+double ScalarProduct(double* u, double* v, int N)
+{
+    double product = .0;
+    for (int i = 0; i < N; i++)
+        product = product + (*(u + i)) * (*(v+i));
+    return product;
 }
 

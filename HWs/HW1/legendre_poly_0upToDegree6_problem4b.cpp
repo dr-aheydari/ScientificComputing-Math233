@@ -12,7 +12,9 @@ void SafetyCheck(int n);
 void SafeGaurd(int n);
 
 int main()
-{   // initiailize
+{   // set precision for cout
+    std::cout.precision(32);
+    // initiailize
     double x = 0;
     int n = 0;
     // we assume to need dynamic arrays (to make it more interesting)

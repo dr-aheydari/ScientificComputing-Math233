@@ -10,7 +10,9 @@ void SafetyCheck(int n);
 void SafeGaurd(int n);
 
 int main()
-{   // initiailize
+{   // set precision for cout
+    std::cout.precision(32);
+    // initiailize
     double x = 0;
     int n = 0;
     std::cout<<"Legendre Polynomial Evaluator!" << std::endl;
