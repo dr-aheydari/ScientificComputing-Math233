@@ -8,5 +8,5 @@ All homework codes which used pointers and/or references were checked with `valg
 ````
 $ g++ -g <desired_code>.cpp
  
-valgrind --tool=memcheck --track-origins=yes --leak-check=full ./a.out
+$ valgrind --tool=memcheck --track-origins=yes --leak-check=full ./a.out
 ```` 
