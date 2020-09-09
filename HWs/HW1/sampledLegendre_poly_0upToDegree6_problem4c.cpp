@@ -45,7 +45,7 @@ double Legendre(double x, int n)
     switch(n)
     {
     case 0:
-        return 1;
+        return 1.0;
     case 1:
         return L1(x);
     case 2:
