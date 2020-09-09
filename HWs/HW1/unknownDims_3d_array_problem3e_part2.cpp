@@ -58,6 +58,6 @@ void DeleteDynamic3d(double*** &array3d, int N, int M)
     }
     // and last
     delete[] array3d;
-    // point to null to be safe (but not neccessary)
+    // point to null to be safe (but not necessary)
     array3d = nullptr;
 }
