@@ -3,12 +3,15 @@
 Step 0: Make sure `brew` is installed and ready to go
 
 Step 1: install `llvm` 
+
 `$ brew install llvm`
 
 Step 2: install `libomp`
+
 `$ brew install libomp`
 
 Step 3: Run a test code using the following explicit calls and flags
+
 `$ /usr/local/opt/llvm/bin/clang++ -fopenmp <YOURCODE>.cpp -L/usr/local/opt/llvm/lib -I/usr/local/opt/llvm/include -o <execName> `
 
 example code to run :
@@ -27,7 +30,9 @@ int main( int argc, char ** argv )
 }
 ````
 if you save as `hello_world.cpp`, you can run :
+
 `$ /usr/local/opt/llvm/bin/clang++ -fopenmp hello_world.cpp -L/usr/local/opt/llvm/lib -I/usr/local/opt/llvm/include -o hello`
+
 ***n.b. : make sure your output makes sense*** 
 Step 4: Run the executable
 `$ ./hello`
