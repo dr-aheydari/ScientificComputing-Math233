@@ -34,11 +34,14 @@ if you save as `hello_world.cpp`, you can run :
 `$ /usr/local/opt/llvm/bin/clang++ -fopenmp hello_world.cpp -L/usr/local/opt/llvm/lib -I/usr/local/opt/llvm/include -o hello`
 
 ***n.b. : make sure your output makes sense*** 
+
 Step 4: Run the executable
+
 `$ ./hello`
+
 ***n.b.: make sure your output makes sense*** 
 
-Step 5 (optional): Make an alias for the compiler call (i.e. */usr/local/opt/llvm/bin/clang++*) and the include flags for easier compilation
+Step 5 (optional): Make an alias for the compiler call (i.e. `/usr/local/opt/llvm/bin/clang++`) and the include flags for easier compilation
 
 Step 6 (optional and unnecessary) : Talk to Ali about how to get this working for your specific IDE. 
 
