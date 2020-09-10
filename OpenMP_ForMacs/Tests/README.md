@@ -1,1 +1,1 @@
-These test cases are taken directly from [Prof. Theillard's](https://appliedmath.ucmerced.edu/content/maxime-theillard) example codes from lecture. All codes compile and executed as expected on macOS High-Sierra, Mojave and Catalina.
+These test cases are taken directly from [Prof. Theillard's](https://appliedmath.ucmerced.edu/content/maxime-theillard) lecture examples. All codes compile and executed as expected on macOS High-Sierra, Mojave and Catalina.
