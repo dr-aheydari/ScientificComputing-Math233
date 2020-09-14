@@ -1,4 +1,4 @@
-
+// this should also cause issues in the Naive approach 
 #include <omp.h>
 #include<math.h>
 #include <limits>
@@ -13,16 +13,12 @@ using namespace std;
 
 int main( int argc, char ** argv )
 {
-
-    omp_set_num_threads(4);
-
-
     
     long N=100000000;
     double *value = new double[N];
 
     // set the number of thread and do not allow it to change ....
-    omp_set_num_threads(12);
+    omp_set_num_threads(20);
     omp_set_dynamic(false);
 
 
