@@ -1,0 +1,64 @@
+% initialize the .vtk file with all the grid information
+% by default the input variable time can be set to DBL_MIN and it won't be printed into the vtk
+void QuadTree::print_VTK_Format( std::string file_name, double time ) const
+{
+  CaslInt num_of_leaf_cells;
+  int node_of_cell[4];
+  double x, y;
+
+  FILE *outFile = fopen(file_name.c_str(),"w");
+
+  fprintf(outFile,"# vtk DataFile Version 2.0 \n");
+  fprintf(outFile,"Quadtree Mesh \n");
+  fprintf(outFile,"ASCII \n");
+  fprintf(outFile,"DATASET UNSTRUCTURED_GRID \n");
+
+ % if you want to associate a time to the .vtk file (e.g. for a time serie)
+  if(time != DBL_MIN)
+  {
+    fprintf(outFile,"FIELD FieldData 1 \n");
+    fprintf(outFile,"TIME 1 1 double \n");
+    fprintf(outFile,"%e \n",time);
+  }
+ 
+% first output the list of nodes
+  fprintf(outFile,"POINTS %d double \n",nodes.size());
+  for (CaslInt n=0; n<nodes.size(); n++){
+    x = x_fr_i(nodes(n).i);
+    y = y_fr_j(nodes(n).j);
+    fprintf(outFile,"%e %e %e\n",x,y,0.0);
+  }
+
+% then output the list of cells. each cell is composed of four nodes
+% num_of_leaves is the total number of cells of the mesh
+  num_of_leaf_cells = number_Of_Leaves();
+
+  fprintf(outFile,"CELLS %d %d \n",num_of_leaf_cells,5*num_of_leaf_cells);
+  for (CaslInt n=0; n<cells.size(); n++){
+    if ( cells(n).is_Leaf() ){
+      node_of_cell[0] = get_Node_By_Coordinates(cells(n).imin(),cells(n).jmin());
+      node_of_cell[1] = get_Node_By_Coordinates(cells(n).imax(),cells(n).jmin());
+      node_of_cell[2] = get_Node_By_Coordinates(cells(n).imax(),cells(n).jmax());
+      node_of_cell[3] = get_Node_By_Coordinates(cells(n).imin(),cells(n).jmax());
+    
+      fprintf(outFile,"%d %d %d %d %d\n",4,node_of_cell[0], node_of_cell[1], node_of_cell[2], node_of_cell[3]);
+    }
+  }
+  fprintf(outFile,"CELL_TYPES %d \n",num_of_leaf_cells);
+  for (CaslInt n=0; n<num_of_leaf_cells; n++)    fprintf(outFile,"%d \n",9);
+  fprintf(outFile,"POINT_DATA %d \n",nodes.size());
+  fclose (outFile);
+}
+% this function write the values of the vector F into the vtk file. before using it, the .vtk file must have been initialized with all the grid infos
+void print_VTK_Format( vector<double> &F, std::string data_name, std::string file_name ) const
+{
+  CaslInt num_of_nodes;
+  num_of_nodes = this -> number_Of_Nodes();
+  FILE *outFile;
+  outFile = fopen(file_name.c_str(),"a");
+  fprintf(outFile,"SCALARS %s double 1 \n",data_name.c_str());
+  fprintf(outFile,"LOOKUP_TABLE default \n");
+  for (CaslInt n=0; n<num_of_nodes; n++) fprintf(outFile,"%e \n",F(n));
+  fclose (outFile);
+}
+
