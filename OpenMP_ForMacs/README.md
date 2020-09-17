@@ -60,7 +60,7 @@ Since we are changing the default compilers, we will get a lot of IDE errors whe
 
 ![IDE Errors](./Images/Wrong_Errors.png)
 
-To disable this got to **QT Creator > About Plugins** and uncheck **Clang Code Model** (under **C++** tab). Here is GIF to better illustrate this process:
+To disable this go to **QT Creator > About Plugins** and uncheck **Clang Code Model** (under **C++** tab). Here is GIF to better illustrate this process:
 
 ![Disabling Clang Code Model](https://media.giphy.com/media/zdOuHU0usWpKTlPcBT/giphy.gif)
 
