@@ -47,13 +47,13 @@ if you save as `hello_world.cpp`, you can run :
 
 ## Setting Up QT Dev Env with OpenMP on macOS
 
-<sub><sup> Thoughts: I would like to note that in my humble and insignificant opinion, QT Creator is one of the worst IDEs I have ever used; I think most developers would agree with the following:</sup></sub>
+/* <sub><sup> Thoughts: I would like to note that in my humble and insignificant opinion, QT Creator is one of the worst IDEs I have ever used; I think most developers would agree with the following:</sup></sub>
 
 <sub><sup>(i) Try using command line for writing and compiling your code </sup></sub>
  
 <sub><sup>(ii) If you are using a macOS, use Xcode </sup></sub>
 
-<sub><sup> But due to popular demand, here are the steps of how to set up QT to work with openMP in OSX.</sup></sub>
+<sub><sup> But due to popular demand, here are the steps of how to set up QT to work with openMP in OSX.</sup></sub> */
 
 ***Step 1***: Disable Clang Code Model to Reduce Annoyance
 
