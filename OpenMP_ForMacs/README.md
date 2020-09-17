@@ -55,15 +55,19 @@ Disclaimer: I would like to note that in my humble opinion, QT creator is one of
 But due to popular demand, here are the steps of how to set up QT to work with openMP in OSX.
 
 ***Step 1***: Disable Clang Code Model to Reduce Annoyance
+
 Since we are changing the default compilers, we will get a lot of IDE errors when writing the code, but these are not *real errors* since your code will compile and run just fine. The idea is that a QT plugin called "Clang Code Model" uses a desktop compiler to parse the code, but we are doing some cross compiler stuff. Althought this will not result in any crashes, it is very annoying to see a bunch of errors that should not be there. For example, we can get the following editor errors (note the red circle with black centers and not red centers!):
 ![IDE Errors](./Images/Wrong_Errors.png)
 
 To disable this got to **QT Creator > About Plugins** and uncheck **Clang Code Model** (under **C++** tab). Here is GIF to better illustrate this process:
 
 ![Disabling Clang Code Model](https://media.giphy.com/media/zdOuHU0usWpKTlPcBT/giphy.gif)
+
+
 *n.b. make sure to exit out of QT, and reopen after this step.*
 
 ***Step 2***: Add the New Compilers to QT
+
 Now that we have installed the compilers, we want to make sure that QT finds them. This can be done via **(Side Pannel) Projects > Kits > Compilers**.
 
 Once you are in the compiler tab, click on **add > Clang > C++** and enter the following:  
@@ -83,12 +87,14 @@ Just to illustrate how these should look like after you have done the above step
 ![Adding Compilers](https://media.giphy.com/media/JltKWRZKDrriRdpVOS/giphy.gif)
 
 
-***Step 2***: Change the Kit's Compiler to the New Compilers
+***Step 3***: Change the Kit's Compiler to the New Compilers
+
 The last setup step is to change the compilers of the kit from the default to the new ones that we just added. To do so, go to **(Side Pannel) Projects > Kits** and select the current kit which you are using. In the menu, change the Compiler for `C` and `C++` to the ones you just added. The following GIF demonstrates how that would be done if the compilers were named `OpenMP_LLVM_C++` and `OpenMP_LLVM_C` respectively.
 
 ![Kit's Compilers Config](https://media.giphy.com/media/mO6GsyzChxAVMa7N73/giphy.gif)
 
-***Step 3***: Add `make` Flags to `.pro`
+***Step 4***: Add `make` Flags to `.pro`
+
 Finally, we can add the following flags to the `.pro` file of your project, and it should work like a charm!
 
 ````
@@ -107,7 +113,7 @@ LIBS += -L /usr/local/lib /usr/local/lib/libomp.dylib
 }
 ````
 
-***Step 4***: Run Your Code and Ponder Why You Use QT when You have Xcode
+***Step 5***: Run Your Code and Ponder Why You Use QT when You have Xcode
 
 That's it, everything should work just fine now. For demonstration, I will run the following code with 20 threads:
 
@@ -129,6 +135,8 @@ return 0;
 ````
 
 and we get the following output:
+
+
 ![helloworld_omp_run](https://media.giphy.com/media/RGAIKcEmK1G7n2WNvG/giphy.gif)
 
 --------
