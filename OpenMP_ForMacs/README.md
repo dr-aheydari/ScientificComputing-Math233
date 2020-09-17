@@ -74,11 +74,13 @@ Now that we have installed the compilers, we want to make sure that QT finds the
 Once you are in the compiler tab, click on **add > Clang > C++** and enter the following:  
 
 Name: `AlisLLVM_C++(ANY NAME WORKS)`
+
 Compiler Path: `/usr/local/opt/llvm/bin/clang++`
 
 and leave the rest as default. You should also do the same thing for a `C` compiler, in case if you need to run a C program in the future. In the Compiler tab, you can do **add > Clang > C** and enter:
 
 Name: `AlisLLVM_C`
+
 Compiler Path: `/usr/local/opt/llvm/bin/clang`
 
 *n.b. make sure that these new compilers show up under manual drop-down menue of the compiler list*
