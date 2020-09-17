@@ -57,6 +57,7 @@ But due to popular demand, here are the steps of how to set up QT to work with o
 ***Step 1***: Disable Clang Code Model to Reduce Annoyance
 
 Since we are changing the default compilers, we will get a lot of IDE errors when writing the code, but these are not *real errors* since your code will compile and run just fine. The idea is that a QT plugin called "Clang Code Model" uses a desktop compiler to parse the code, but we are doing some cross compiler stuff. Althought this will not result in any crashes, it is very annoying to see a bunch of errors that should not be there. For example, we can get the following editor errors (note the red circle with black centers and not red centers!):
+
 ![IDE Errors](./Images/Wrong_Errors.png)
 
 To disable this got to **QT Creator > About Plugins** and uncheck **Clang Code Model** (under **C++** tab). Here is GIF to better illustrate this process:
