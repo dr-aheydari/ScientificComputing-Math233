@@ -25,6 +25,13 @@ public:
     double operator()(double x, double y) const;
 };
 
+class xyFunction:CF_2
+{
+public:
+    double operator()(double x, double y) const;
+    void Assign(std::vector<double>& funct, double x_max, double y_max);
+    
+};
 #endif
 
 

@@ -6,33 +6,21 @@
 int main()
 {
     
-    velocity_X F_x;
-    velocity_Y F_y;
-    int N_x = 10;
-    int N_y = 10;
+    velocity_X V_x;
+    velocity_Y V_y;
+    // a class for handling the function
+    xyFunction F_xy;
+    int N_x = 100;
+    int N_y = 100;
     //Grid2D::Grid2D(int N_, int M_, double xmin_, double xmax_, double ymin_, double ymax_)
     Grid2D my_grid(N_x,N_y,0,1,0,1);
     
     std::cout<<"grid resolution in x :"<<my_grid.get_dx()<<std::endl;
-    
-    // vector of values defined at the nodes of the grid
     std::vector<double> funct;
-    funct.resize(N_x*N_y);
-    // fill with 0.
-    std::fill(funct.begin(), funct.end(), 0.0);
-#pragma omp parallel for collapse(2)
-    for (int i=0; i<N_x; i++)
-        for (int j=0; j < N_y; j++)
-        {
-            double x  = double(i)/N_x;
-            double y  = double(j)/N_y;
-            funct[i+ j*N_y]= F_y(x,y);
-            //            funct[i+ j*N_y]= F_x(x,y);
-        }
-    
-    my_grid.display(funct);
-    //    std::cout<<"Automatic differentiation \n"<<my_grid.Auto_dx(funct, 0, F_x)<<std::endl;
-    std::cout<<"Automatic differentiation \n"<<my_grid.Auto_dy(funct, 14, F_y)<<std::endl;
+    F_xy.Assign(funct, N_x, N_y);
+    //    my_grid.display(funct);
+    std::cout<<"Automatic x differentiation \n"<<my_grid.Auto_dx(funct, 0, V_x)<<std::endl;
+    std::cout<<"Automatic y differentiation \n"<<my_grid.Auto_dy(funct, 0, V_y)<<std::endl;
     
     
     // create a name for the vtk file, with the grid size in it
