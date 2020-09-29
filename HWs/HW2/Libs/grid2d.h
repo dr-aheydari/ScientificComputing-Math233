@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <vector>
-#include "libs.h"
+#include <Libs/XYVelocity.h>
+//#include <tuple>
 
 class Grid2D
 {
@@ -13,8 +14,11 @@ private:
     double dx,dy;
 public:
     Grid2D();
-    //    ~Grid2D();
     Grid2D(int N_, int M_, double xmin_, double xmax_, double ymin_, double ymax_);
+    double get_N() const;
+    double get_M() const;
+    std::tuple <double, double> get_x_range() const;
+    std::tuple <double, double> get_y_range() const;
     double get_dx() const;
     double get_dy() const;
     int i_from_n(int n) const;
@@ -29,7 +33,12 @@ public:
     double Auto_dy(const std::vector<double>& funct,int n,velocity_Y field);
     double Auto_dxx(const std::vector<double>& funct,int n, velocity_X field);
     double Auto_dyy(const std::vector<double>& funct,int n,velocity_Y field);
-    
+
+    // initial solution
+    double Initial_Solution();
+
+    // MinMod
+    double MinMod(double lval, double rval);
     // first derivatives
     double dx_forward (const std::vector<double>& funct,int n)const;
     double dx_backward (const std::vector<double>& funct,int n)const;
@@ -49,13 +58,13 @@ public:
     char CheckXBoundary(int n);
     char CheckYBoundary(int n);
     void display(std::vector<double>& funct) const;
-    
+    ~Grid2D(){};
     /*
      * with 1D function (I do not like this way that Maxime has asked us to do it
      * For this particular example, I would probably use a 2D vector architecture; i.e.
-     double dx_forward (const std::vector<std::vector<double>>& funct,int n)const;
-     
-     */
+        double dx_forward (const std::vector<std::vector<double>>& funct,int n)const;
+
+    */
 };
 
 #endif // GRID2D_H
