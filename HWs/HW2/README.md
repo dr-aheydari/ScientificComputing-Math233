@@ -3,6 +3,6 @@ This repository will host my code for solving 2D advection equation. Please be s
 
 (Incomplete) Example of a 2D advection solution on a 200x200 grid:
 
-[incomplete&incorrectExample](https://giphy.com/gifs/gtUY7jNuxPXoBUzfP8)
+![incomplete&incorrectExample](https://giphy.com/gifs/gtUY7jNuxPXoBUzfP8)
 
 
