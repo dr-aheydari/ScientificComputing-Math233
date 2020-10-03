@@ -33,10 +33,10 @@ public:
     double Auto_dy(const std::vector<double>& funct,int n,velocity_Y field);
     double Auto_dxx(const std::vector<double>& funct,int n, velocity_X field);
     double Auto_dyy(const std::vector<double>& funct,int n,velocity_Y field);
-
+    
     // initial solution
     double Initial_Solution();
-
+    
     // MinMod
     double MinMod(double lval, double rval);
     // first derivatives
@@ -62,9 +62,9 @@ public:
     /*
      * with 1D function (I do not like this way that Maxime has asked us to do it
      * For this particular example, I would probably use a 2D vector architecture; i.e.
-        double dx_forward (const std::vector<std::vector<double>>& funct,int n)const;
-
-    */
+     double dx_forward (const std::vector<std::vector<double>>& funct,int n)const;
+     
+     */
 };
 
 #endif // GRID2D_H

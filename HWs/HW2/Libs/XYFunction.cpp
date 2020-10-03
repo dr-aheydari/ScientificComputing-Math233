@@ -9,13 +9,13 @@ xyFunction::xyFunction(Grid2D grid)
     N_y = grid.get_M();
     std::tie(x_min,x_max) = grid.get_x_range();
     std::tie(y_min,y_max) = grid.get_y_range();
-
+    
 }
 
 
 double xyFunction::operator ()(double x, double y) const
 {
-    return sqrt(std::pow(x-0.5,2) + std::pow(y,2))- 0.2;
+    return sqrt(std::pow(x - 0.5,2) + std::pow(y,2))- 0.2;
 }
 
 std::vector<double> xyFunction::Assign()
@@ -25,7 +25,7 @@ std::vector<double> xyFunction::Assign()
     funct.resize(N_x*N_y);
     // fill with 0.
     std::fill(funct.begin(), funct.end(), 0.0);
-//#pragma omp parallel for collapse(2)
+    //#pragma omp parallel for collapse(2)
     for (int i=0; i<N_x; i++)
         for (int j=0; j < N_y; j++)
         {
@@ -44,7 +44,7 @@ std::vector<double> xyFunction::InitialCondition()
     init_cond.resize(N_x*N_y);
     // fill with 0.
     std::fill(init_cond.begin(), init_cond.end(), 0.0);
-//#pragma omp parallel for collapse(2)
+    //#pragma omp parallel for collapse(2)
     for (int i=0; i<N_x; i++)
         for (int j=0; j < N_y; j++)
         {
