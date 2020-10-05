@@ -2,6 +2,8 @@
 This repository will host my code for solving 2D advection equation. Please be sure to ask permission/cite this work if you use this for any graded assignment. 
 
 ## 64x64 Grid Simulation
+This simulation happens at the actual evolution time
+
 
 ![64x64 Simulation Video](https://media.giphy.com/media/G1sAoEurj3sf5SrxHY/giphy.gif)
 
@@ -9,15 +11,18 @@ This repository will host my code for solving 2D advection equation. Please be s
 
 
 ## 128x128 Grid Simulation
+The visualizations are 10x the speed of the actual evolution time
+
+
 ![128x128 Simulation Video](https://media.giphy.com/media/nVzPMWdtvl1AdOethD/giphy.gif)
 
 
 [128x128 Simulation Video (Downloadable)](https://ucmerced.box.com/s/846hn9iwtn86ja927aaqfbjbvaze0p9k)
 
 ## 256x256 Grid Simulation
+The visualizations are 20x the speed of the actual evolution time
 
 ![128x128 Simulation Video](https://media.giphy.com/media/nVzPMWdtvl1AdOethD/giphy.gif)
-
 
 
 [128x128 Simulation Video (Downloadable)](https://ucmerced.box.com/s/846hn9iwtn86ja927aaqfbjbvaze0p9k)
