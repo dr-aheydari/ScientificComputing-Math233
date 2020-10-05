@@ -44,6 +44,9 @@ This simulation happens at the actual evolution time
 
 
 ### 256x256 Grid Simulation
+
+![128x128 Simulation Video](https://media.giphy.com/media/nVzPMWdtvl1AdOethD/giphy.gif)
+
 The visualizations are 20x the speed of the actual evolution time
 
 ![256x256 Simulation GIF-LevelSet](https://media.giphy.com/media/4Vy2ZLO3l9F5oxgOlh/giphy.gif)
