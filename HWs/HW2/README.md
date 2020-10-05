@@ -7,7 +7,9 @@ This repository will host my code for solving 2D advection equation. Please be s
 
 
 ## 128x128 Grid Simulation
-[128x128 Simulation Video](https://media.giphy.com/media/nVzPMWdtvl1AdOethD/giphy.gif)
+![128x128 Simulation Video](https://media.giphy.com/media/nVzPMWdtvl1AdOethD/giphy.gif)
+
+
 [128x128 Simulation Video](https://ucmerced.box.com/s/846hn9iwtn86ja927aaqfbjbvaze0p9k)
 
 
