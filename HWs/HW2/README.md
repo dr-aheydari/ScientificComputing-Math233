@@ -6,7 +6,7 @@ This repository will host my code for solving 2D advection equation. Please be s
 ### 64x64 Grid Simulation
 This simulation happens at the actual evolution time
 
-![64x64 Simulation LevelSet GIF](https://media.giphy.com/media/4Vy2ZLO3l9F5oxgOlh/giphy.gif)
+![64x64 Simulation LevelSet GIF](https://media.giphy.com/media/a9lkDa3ZXq6XP01o1h/giphy.gif)
 
 
 [64x64 Simulation Video](https://ucmerced.box.com/s/vgogy62uklu5raxtgw58rogsjq14xxm6)
