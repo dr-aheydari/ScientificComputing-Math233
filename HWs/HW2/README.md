@@ -47,7 +47,7 @@ This simulation happens at the actual evolution time
 
 The visualizations are 20x the speed of the actual evolution time
 
-![256x256 Simulation GIF LevelSet](https://media.giphy.com/media/4Vy2ZLO3l9F5oxgOlh/giphy.gif)
+![256x256 Simulation GIF LevelSet](https://media.giphy.com/media/oqe08UPuGd5eq4CIoU/giphy.gif)
 
 
 [256x256 Simulation Video-LevelSet(Downloadable)](https://ucmerced.box.com/s/vgogy62uklu5raxtgw58rogsjq14xxm6)
