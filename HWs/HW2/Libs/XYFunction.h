@@ -11,13 +11,13 @@ private:
     int N_x,N_y;
     double x_min,x_max,y_min,y_max;
     Grid2D my_grid;
-public:
+   public:
     xyFunction(Grid2D grid);
     double operator()(double x, double y) const;
     std::vector<double> Assign();
     std::vector<double> InitialCondition();
     ~xyFunction(){};
-    
+
 };
 #endif
 

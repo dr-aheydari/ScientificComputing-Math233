@@ -23,8 +23,8 @@ public:
     double get_dy() const;
     int i_from_n(int n) const;
     int j_from_n(int n) const;
-    double x_from_n(int n);
-    double y_from_n(int n);
+    double x_from_n(int n) const;
+    double y_from_n(int n) const;
     int n_from_ij(int i, int j);
     void initialize_VTK_file(std::string file_name);
     void print_VTK_Format( std::vector<double> &F, std::string data_name, std::string file_name );
@@ -33,12 +33,14 @@ public:
     double Auto_dy(const std::vector<double>& funct,int n,velocity_Y field);
     double Auto_dxx(const std::vector<double>& funct,int n, velocity_X field);
     double Auto_dyy(const std::vector<double>& funct,int n,velocity_Y field);
-    
+
     // initial solution
     double Initial_Solution();
-    
+
     // MinMod
-    double MinMod(double lval, double rval);
+    double Auto_MinMod_x(const std::vector<double>& funct,int n,velocity_X field) const;
+    double Auto_MinMod_y(const std::vector<double>& funct,int n,velocity_Y field) const;
+    double MinMod(double lval, double rval) const;
     // first derivatives
     double dx_forward (const std::vector<double>& funct,int n)const;
     double dx_backward (const std::vector<double>& funct,int n)const;
@@ -55,16 +57,16 @@ public:
     // add consts here
     void SafetyCheck(const std::vector<double>& funct) const;
     void CheckDim(const std::vector<double>& funct) const;
-    char CheckXBoundary(int n);
-    char CheckYBoundary(int n);
+    char CheckXBoundary(int n) const;
+    char CheckYBoundary(int n) const;
     void display(std::vector<double>& funct) const;
     ~Grid2D(){};
     /*
      * with 1D function (I do not like this way that Maxime has asked us to do it
      * For this particular example, I would probably use a 2D vector architecture; i.e.
-     double dx_forward (const std::vector<std::vector<double>>& funct,int n)const;
-     
-     */
+        double dx_forward (const std::vector<std::vector<double>>& funct,int n)const;
+
+    */
 };
 
 #endif // GRID2D_H

@@ -14,7 +14,7 @@ int sgn(T val)
 ////////////////automated differentiation functions
 double Grid2D::Auto_dx(const std::vector<double> &funct, int n, velocity_X field)
 {
-    
+
     switch (CheckXBoundary(n))
     {
         case 'f':
@@ -27,51 +27,49 @@ double Grid2D::Auto_dx(const std::vector<double> &funct, int n, velocity_X field
             double condition = field(x,y);
             if (sgn(condition) == 1)
             {
-                return dx_backward(funct,n);
+               return dx_backward(funct,n);
             }
             else
             {
-                return dx_forward(funct,n);
+               return dx_forward(funct,n);
             }
     }
-    std::cout<<"HELLO_x?"<<std::endl;
 }
 
 double Grid2D::Auto_dy(const std::vector<double> &funct, int n, velocity_Y field)
 {
-    
+
     switch (CheckYBoundary(n))
     {
         case 'f':
             return 0.0; //dy_forward(funct,n);
         case 'b':
             return 0.0; //dy_backward(funct,n);
-            // check these conditions
+        // check these conditions
         case 'c':
             double x = x_from_n(n);
             double y = y_from_n(n);
             double condition = field(x,y);
             if (sgn(condition) == 1)
             {
-                return dy_backward(funct,n);
+               return dy_backward(funct,n);
             }
             else
             {
-                return dy_forward(funct,n);
+               return dy_forward(funct,n);
             }
     }
-    std::cout<<"HELLO_y?"<<std::endl;
 }
 
 
-char Grid2D::CheckXBoundary(int n)
+char Grid2D::CheckXBoundary(int n) const
 {
     // check for x boundary
-    if (x_from_n(n) == xmax)
+    if (x_from_n(n) == xmax || x_from_n(n) == xmax + dx)
     {
         return 'b';
     }
-    else if (x_from_n(n) == xmin)
+    else if (x_from_n(n) == xmin || x_from_n(n) == xmin + dx)
     {
         return 'f';
     }
@@ -80,10 +78,10 @@ char Grid2D::CheckXBoundary(int n)
     {
         return 'c';
     }
-    
+
 }
 
-char Grid2D::CheckYBoundary(int n)
+char Grid2D::CheckYBoundary(int n) const
 {
     // check for y boundary
     if (y_from_n(n) == ymin)
@@ -105,39 +103,152 @@ char Grid2D::CheckYBoundary(int n)
 
 double Grid2D::Auto_dxx(const std::vector<double> &funct, int n, velocity_X field)
 {
-    
+
     switch (CheckXBoundary(n))
     {
         case 'f':
-            return dxx_forward(funct,n);
+            return 0.0; // dxx_forward(funct,n);
         case 'b':
-            return dxx_backward(funct,n);
+            return 0.0; //dxx_backward(funct,n);
         case 'c':
-            return MinMod(dxx_center(funct,n),dxx_center(funct,n-1));
+            return Auto_MinMod_x(funct,n,field);
     }
 }
 
 
 double Grid2D::Auto_dyy(const std::vector<double> &funct, int n, velocity_Y field)
 {
-    
+
     switch (CheckYBoundary(n))
     {
         case 'f':
-            return dyy_forward(funct,n);
+            return 0.0; //dyy_forward(funct,n);
         case 'b':
-            return dyy_backward(funct,n);
+            return 0.0; //dyy_backward(funct,n);
         case 'c':
-            return MinMod(dyy_center(funct,n),dyy_center(funct,n-1));
+            return Auto_MinMod_y(funct,n,field);
     }
 }
 
 //##############automated differentiation functions
 
+
+
+//############## all needed info for MinMod function
+
+double Grid2D::Auto_MinMod_x(const std::vector<double>& funct,int n,velocity_X field) const
+{
+    double min_mod;
+    switch (CheckXBoundary(n))
+    {
+        case 'f':
+        {
+            // if we are at the left boundary
+            min_mod = MinMod(0,dxx_forward(funct,n));
+            double x_2 = x_from_n(n+1);
+            return ((x_2-0)/2) * min_mod;
+        }
+        case 'b':
+        {      // if we are at the right boundary
+            min_mod = MinMod(dxx_backward(funct,n),0);
+            double x_1 = x_from_n(n-1);
+            return ((0-x_1)/2) * min_mod;
+        }
+        // check these conditions
+        case 'c':
+        {
+            double x = x_from_n(n);
+            double y = y_from_n(n);
+            double condition = field(x,y);
+            if (sgn(condition) == 1)
+            {
+                min_mod = MinMod(dxx_center(funct,n),dxx_center(funct,n-1));
+                double x_1 = x_from_n(n-1);
+                double x_2 = x_from_n(n);
+                return ((x_2-x_1)/2) * min_mod;
+            }
+            else
+            {
+                min_mod = MinMod(dxx_center(funct,n),dxx_center(funct,n+1));
+                double x_1 = x_from_n(n);
+                double x_2 = x_from_n(n+1);
+                return ((x_2-x_1)/2) * min_mod;
+            }
+        }
+    }
+
+}
+
+double Grid2D::Auto_MinMod_y(const std::vector<double>& funct,int n,velocity_Y field) const
+{
+    switch (CheckYBoundary(n))
+    {
+        double min_mod;
+        case 'f':
+        {
+
+            // if we are at the left boundary
+            min_mod = MinMod(0,dyy_forward(funct,n));
+            double y_2 = y_from_n(n+N);
+            return ((y_2-0)/2) * min_mod;
+        }
+        case 'b':
+        {
+            // if we are at the right boundary
+            min_mod = MinMod(dyy_backward(funct,n),0);
+            double y_1 = y_from_n(n-N);
+            return ((0-y_1)/2) * min_mod;
+        }
+        // check these conditions
+        case 'c':
+        {
+            double x = x_from_n(n);
+            double y = y_from_n(n);
+            double condition = field(x,y);
+            if (sgn(condition) == 1)
+            {
+                min_mod = MinMod(dyy_center(funct,n),dyy_center(funct,n-N));
+                double y_1 = y_from_n(n-N);
+                double y_2 = y_from_n(n);
+                return ((y_2-y_1)/2) * min_mod;
+            }
+            else
+            {
+                min_mod = MinMod(dyy_center(funct,n),dyy_center(funct,n+N));
+                double y_1 = y_from_n(n);
+                double y_2 = y_from_n(n+1);
+                return ((y_2-y_1)/2) * min_mod;
+            }
+        }
+
+    }
+}
+
+
+double Grid2D::MinMod(double lval, double rval) const
+{
+  if(lval*rval<=0)
+      return 0;
+  else
+    {
+       if((abs(lval))<(abs(rval)))
+           return lval;
+       else
+           return rval;
+    }
+}
+
+
+
+
+
+
+//##############all needed info for MinMod function
+
 ////////////////all the derivative function
 double Grid2D::dx_forward (const std::vector<double>& funct,int n)const
 {
-    
+
     SafetyCheck(funct);
     return (funct[n + 1] - funct[n])/(dx + DBL_EPSILON);
 }
@@ -152,7 +263,7 @@ double Grid2D::dy_forward (const std::vector<double>& funct,int n)const
 {
     SafetyCheck(funct);
     return (funct[n + N] - funct[n])/(dy + DBL_EPSILON);
-    
+
 }
 double Grid2D::dy_backward (const std::vector<double>& funct,int n)const
 {
@@ -173,15 +284,14 @@ double Grid2D::dxx_center (const std::vector<double>& funct,int n)const
 double Grid2D::dxx_backward (const std::vector<double>& funct,int n)const
 {
     SafetyCheck(funct);
-    return 0.;
-    //    return (funct[n] - 2*funct[n - 1]+funct[n - 2])/(std::pow(dx,2)+ DBL_EPSILON);
+    return (funct[n] - 2*funct[n - 1]+funct[n - 2])/(std::pow(dx,2)+ DBL_EPSILON);
 }
 
 double Grid2D::dxx_forward(const std::vector<double>& funct,int n)const
 {
     SafetyCheck(funct);
     return 0.;
-    //    return (funct[n+2] - 2*funct[n+1]+funct[n])/(std::pow(dx,2)+ DBL_EPSILON);
+//    return (funct[n+2] - 2*funct[n+1]+funct[n])/(std::pow(dx,2)+ DBL_EPSILON);
 }
 
 
@@ -189,7 +299,7 @@ double Grid2D::dyy_center (const std::vector<double>& funct,int n)const
 {
     SafetyCheck(funct);
     // get the (i,j) coordinate
-    return (funct[n + N] - 2* funct[n] + funct[n - N])/(std::pow(dy,2)+ DBL_EPSILON);
+    return 0.0; //(funct[n + N] - 2* funct[n] + funct[n - N])/(std::pow(dy,2)+ DBL_EPSILON);
 }
 
 double Grid2D::dyy_forward (const std::vector<double>& funct,int n)const
@@ -248,33 +358,18 @@ void Grid2D::display(std::vector<double>& funct) const
     }
 }
 
-
-double Grid2D::MinMod(double lval, double rval)
-{
-    if(lval*rval<=0)
-        return 0;
-    else
-    {
-        if((abs(lval))<(abs(rval)))
-            return lval;
-        else
-            return rval;
-    }
-}
-
-
 void Grid2D::SafetyCheck(const std::vector<double>& funct) const
 {
     try
     {
         CheckDim(funct);
     } catch (const char* msg)
-    
+
     {
         std::cout<<std::endl;
         std::cerr << "Length error: " << msg << std::endl;
         exit(-1);
-    }
+     }
 }
 
 void Grid2D::CheckDim(const std::vector<double>& funct) const
@@ -322,11 +417,11 @@ int Grid2D::n_from_ij(int i, int j)
     return i+ j * N;
 }
 
-double Grid2D::x_from_n(int n)
+double Grid2D::x_from_n(int n) const
 {
     return  xmin + dx*i_from_n(n);
 }
-double Grid2D::y_from_n(int n)
+double Grid2D::y_from_n(int n) const
 {
     return  ymin + dy*j_from_n(n);
 }
@@ -335,48 +430,48 @@ double Grid2D::y_from_n(int n)
 
 void Grid2D::initialize_VTK_file(std::string file_name)
 {
-    int node_of_cell[4];
-    
-    FILE *outFile = fopen(file_name.c_str(),"w");
-    
-    fprintf(outFile,"# vtk DataFile Version 2.0 \n");
-    fprintf(outFile,"Quadtree Mesh \n");
-    fprintf(outFile,"ASCII \n");
-    fprintf(outFile,"DATASET UNSTRUCTURED_GRID \n");
-    
-    
-    //% first output the list of nodes
-    fprintf(outFile,"POINTS %d double \n",N*M);
-    for (int n=0; n<N*M; n++)
-        fprintf(outFile,"%e %e %e\n",x_from_n(n), y_from_n(n), 0.0);
-    
-    
-    // then output the list of cells. each cell is composed of four nodes
-    fprintf(outFile,"CELLS %d %d \n",(N-1)*(M-1),5*(N-1)*(M-1));
-    for (int i=0; i<N-1; i++)
-        for (int j=0; j<M-1; j++)
-        {
-            node_of_cell[0] = n_from_ij(i  ,j  );
-            node_of_cell[1] = n_from_ij(i+1,j  );
-            node_of_cell[2] = n_from_ij(i+1,j+1);
-            node_of_cell[3] = n_from_ij(i  ,j+1);
-            
-            fprintf(outFile,"%d %d %d %d %d\n",4,node_of_cell[0], node_of_cell[1], node_of_cell[2], node_of_cell[3]);
-        }
-    //  }
-    fprintf(outFile,"CELL_TYPES %d \n",(N-1)*(M-1));
-    for (int n=0; n<(N-1)*(M-1); n++)    fprintf(outFile,"%d \n",9);
-    fprintf(outFile,"POINT_DATA %d \n",N*M);
-    fclose (outFile);
+  int node_of_cell[4];
+
+  FILE *outFile = fopen(file_name.c_str(),"w");
+
+  fprintf(outFile,"# vtk DataFile Version 2.0 \n");
+  fprintf(outFile,"Quadtree Mesh \n");
+  fprintf(outFile,"ASCII \n");
+  fprintf(outFile,"DATASET UNSTRUCTURED_GRID \n");
+
+
+//% first output the list of nodes
+  fprintf(outFile,"POINTS %d double \n",N*M);
+  for (int n=0; n<N*M; n++)
+    fprintf(outFile,"%e %e %e\n",x_from_n(n), y_from_n(n), 0.0);
+
+
+  // then output the list of cells. each cell is composed of four nodes
+  fprintf(outFile,"CELLS %d %d \n",(N-1)*(M-1),5*(N-1)*(M-1));
+  for (int i=0; i<N-1; i++)
+      for (int j=0; j<M-1; j++)
+      {
+          node_of_cell[0] = n_from_ij(i  ,j  );
+          node_of_cell[1] = n_from_ij(i+1,j  );
+          node_of_cell[2] = n_from_ij(i+1,j+1);
+          node_of_cell[3] = n_from_ij(i  ,j+1);
+
+          fprintf(outFile,"%d %d %d %d %d\n",4,node_of_cell[0], node_of_cell[1], node_of_cell[2], node_of_cell[3]);
+          }
+  //  }
+  fprintf(outFile,"CELL_TYPES %d \n",(N-1)*(M-1));
+  for (int n=0; n<(N-1)*(M-1); n++)    fprintf(outFile,"%d \n",9);
+  fprintf(outFile,"POINT_DATA %d \n",N*M);
+  fclose (outFile);
 }
 // this function write the values of the vector F into the vtk file. before using it, the .vtk file must have been initialized with all the grid infos
 void Grid2D::print_VTK_Format( std::vector<double> &F, std::string data_name, std::string file_name )
 {
-    
-    FILE *outFile;
-    outFile = fopen(file_name.c_str(),"a");
-    fprintf(outFile,"SCALARS %s double 1 \n",data_name.c_str());
-    fprintf(outFile,"LOOKUP_TABLE default \n");
-    for (int n=0; n<N*M; n++) fprintf(outFile,"%e \n",F[n]);
-    fclose (outFile);
+
+  FILE *outFile;
+  outFile = fopen(file_name.c_str(),"a");
+  fprintf(outFile,"SCALARS %s double 1 \n",data_name.c_str());
+  fprintf(outFile,"LOOKUP_TABLE default \n");
+  for (int n=0; n<N*M; n++) fprintf(outFile,"%e \n",F[n]);
+  fclose (outFile);
 }
