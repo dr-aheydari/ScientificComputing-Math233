@@ -1,27 +1,6 @@
 # HW2: Simulating Simple Advection in 2D with Eno
 This repository will host my code for solving 2D advection equation. Please be sure to ask permission/cite this work if you use this for any graded assignment. 
 
-## Level Set Advection (Without Reinitialization)
-
-### 64x64 Grid Simulation
-This simulation happens at the actual evolution time
-
-![64x64 Simulation LevelSet GIF](https://media.giphy.com/media/a9lkDa3ZXq6XP01o1h/giphy.gif)
-
-
-[64x64 Simulation Video](https://ucmerced.box.com/s/vgogy62uklu5raxtgw58rogsjq14xxm6)
-
-
-### 256x256 Grid Simulation
-
-The visualizations are 20x the speed of the actual evolution time
-
-![256x256 Simulation GIF LevelSet](https://media.giphy.com/media/oqe08UPuGd5eq4CIoU/giphy.gif)
-
-
-[256x256 Simulation Video-LevelSet(Downloadable)](https://ucmerced.box.com/s/igjagbw0jw0jksc660pk460thaz5yufz)
-
-
 ## Advection with Initial Conditions
 
 ### 64x64 Grid Simulation
@@ -54,4 +33,23 @@ The visualizations are 20x the speed of the actual evolution time
 The solution is very similar to the 256x256 simulation, but due to disk space constraints I was unable to save all the time steps during the simulation.
 
 
+## Level Set Advection (Without Reinitialization)
+
+### 64x64 Grid Simulation
+This simulation happens at the actual evolution time
+
+![64x64 Simulation LevelSet GIF](https://media.giphy.com/media/a9lkDa3ZXq6XP01o1h/giphy.gif)
+
+
+[64x64 Simulation Video](https://ucmerced.box.com/s/vgogy62uklu5raxtgw58rogsjq14xxm6)
+
+
+### 256x256 Grid Simulation
+
+The visualizations are 20x the speed of the actual evolution time
+
+![256x256 Simulation GIF LevelSet](https://media.giphy.com/media/oqe08UPuGd5eq4CIoU/giphy.gif)
+
+
+[256x256 Simulation Video-LevelSet(Downloadable)](https://ucmerced.box.com/s/igjagbw0jw0jksc660pk460thaz5yufz)
 
