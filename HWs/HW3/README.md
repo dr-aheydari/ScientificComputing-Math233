@@ -34,7 +34,7 @@ The visualization below is 4x the speed of the actual evolution time. Original e
 ### dt = 2dx
 The visualization illustrates the actual evolution time.
 
-![dt = 2dx GIF](https://media.giphy.com/media/508XKw7hdg8PoZBina/giphy.gif)
+![dt = 2dx GIF](https://media.giphy.com/media/V7wMLTgWWy2pJpI916/giphy.gif)
 
 
 [dt = 2dx Video (Downloadable)](https://ucmerced.box.com/s/568fr7rcbmxjx9syqr45k1dz2sa71rzt)
@@ -43,14 +43,14 @@ The visualization illustrates the actual evolution time.
 
 The visualization illustrates the actual evolution time. 
 
-![dt = 5dx GIF](https://media.giphy.com/media/508XKw7hdg8PoZBina/giphy.gif)
+![dt = 5dx GIF](https://media.giphy.com/media/OZupPqE6B0Y3JsC4cj/giphy.gif)
 
 [dt = 5dx Video (Downloadable)](https://ucmerced.box.com/s/568fr7rcbmxjx9syqr45k1dz2sa71rzt)
 
 ### dt = 10dx
 The visualization illustrates the actual evolution time. 
 
-![dt = 10dx GIF](https://media.giphy.com/media/508XKw7hdg8PoZBina/giphy.gif)
+![dt = 10dx GIF](https://media.giphy.com/media/eJSfueZ1HlhnOvsSRV/giphy.gif)
 
 [dt = 10dx Video (Downloadable)](https://ucmerced.box.com/s/568fr7rcbmxjx9syqr45k1dz2sa71rzt)
 
