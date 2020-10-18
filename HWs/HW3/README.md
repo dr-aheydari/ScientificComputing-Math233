@@ -71,9 +71,9 @@ We plot the gradients of the reinitialized function at every iteration, and comp
 
 ### The Contour Plots
 
-![Gradient Plots GIF](https://media.giphy.com/media/ZUBjuaNz7fMeb3VEYk/giphy.gif)
+![Contour Plots GIF](https://media.giphy.com/media/ZUBjuaNz7fMeb3VEYk/giphy.gif)
 
-[Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/568fr7rcbmxjx9syqr45k1dz2sa71rzt)
+[Contour Plots Video (Downloadable)](https://ucmerced.box.com/s/agloc4bbu10skvce3c0pv4p4x42zc9xo)
 
 
 
