@@ -56,3 +56,24 @@ The visualization illustrates the actual evolution time.
 
 
 ## Level Set: Testing Reinitialization 
+In order to test if our reinitialization scheme works, we can perturb a true reinitialized function (the initial condition in problem 1) and see if our reinitialization scheme can make the perturbed function to be the true function. As described in the write-up, we make that happen and now we look at two visualizations to verify this:
+
+### The Gradient Plots
+
+We plot the gradients of the reinitialized function at every iteration, and compare it side 
+
+
+![Gradient Plots GIF](https://media.giphy.com/media/xDRx8kMdEXdFGYaTKs/giphy.gif)
+
+[Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/568fr7rcbmxjx9syqr45k1dz2sa71rzt)
+
+
+
+### The Contour Plots
+
+![Gradient Plots GIF](https://media.giphy.com/media/ZUBjuaNz7fMeb3VEYk/giphy.gif)
+
+[Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/568fr7rcbmxjx9syqr45k1dz2sa71rzt)
+
+
+
