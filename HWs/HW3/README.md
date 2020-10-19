@@ -80,12 +80,12 @@ We plot the gradients of the reinitialized function at every iteration, and comp
 
 I tried to make an advection simulation where we can turn a moth (at far as I could get it to look like it) turn into a burning phoenix (you have to be imaginative to see it). Here is the result: 
 
-![![MothToBurningPhoenix.gif](https://media.giphy.com/media/0ZKVtIJZvFapbJMriu/giphy.gif)
+![MothToBurningPhoenix.gif](https://media.giphy.com/media/0ZKVtIJZvFapbJMriu/giphy.gif)
 
 [Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/n9p87lqpvca4jd8is31rd7ortd2fzs6w)
 
 
-Here is the vector field I used to get the burning effect:
+Here is the vector field I used (I used `rand()` to add stochasticity which looks like a burning effect):
 
 ````
 double velocity_X::operator()(double x, double y) const
@@ -102,7 +102,5 @@ double velocity_Y::operator()(double x, double y) const
 ````
 
 And the initial condition for the above simulations can be found in the file `XyFunction_Fun.cpp`
-
-
 
 
