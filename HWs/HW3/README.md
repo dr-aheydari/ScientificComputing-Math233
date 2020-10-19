@@ -87,7 +87,7 @@ I tried to make an advection simulation where we can turn a moth (at far as I co
 
 Here is the vector field I used to get the burning effect:
 
-''''
+````
 double velocity_X::operator()(double x, double y) const
 {
     return sin(y) ;
@@ -99,7 +99,7 @@ double velocity_Y::operator()(double x, double y) const
     return (rand() % 5 - rand() % 5) + 0.25 * cos(x);
 }
 
-''''
+````
 
 And the initial condition can be found in the file `XyFunction_Fun.cpp"
 
