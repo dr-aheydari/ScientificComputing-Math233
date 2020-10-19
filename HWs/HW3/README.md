@@ -82,8 +82,27 @@ I tried to make an advection simulation where we can turn a moth (at far as I co
 
 ![![MothToBurningPhoenix.gif](https://s8.gifyu.com/images/MothToBurningPhoenix.gif)](https://gifyu.com/image/87Y9)
 
-[Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/568fr7rcbmxjx9syqr45k1dz2sa71rzt)
+[Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/n9p87lqpvca4jd8is31rd7ortd2fzs6w)
 
 
-Here is the vector field I used to get the butning 
+Here is the vector field I used to get the burning effect:
+
+''''
+double velocity_X::operator()(double x, double y) const
+{
+    return sin(y) ;
+}
+
+
+double velocity_Y::operator()(double x, double y) const
+{
+    return (rand() % 5 - rand() % 5) + 0.25 * cos(x);
+}
+
+''''
+
+And the initial condition can be found in the file `XyFunction_Fun.cpp"
+
+
+
 
