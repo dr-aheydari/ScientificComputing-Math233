@@ -80,7 +80,7 @@ We plot the gradients of the reinitialized function at every iteration, and comp
 
 I tried to make an advection simulation where we can turn a moth (at far as I could get it to look like it) turn into a burning phoenix (you have to be imaginative to see it). Here is the result: 
 
-![![MothToBurningPhoenix.gif](https://s8.gifyu.com/images/MothToBurningPhoenix.gif)](https://gifyu.com/image/87Y9)
+![![MothToBurningPhoenix.gif](https://media.giphy.com/media/0ZKVtIJZvFapbJMriu/giphy.gif)
 
 [Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/n9p87lqpvca4jd8is31rd7ortd2fzs6w)
 
