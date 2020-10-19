@@ -101,7 +101,7 @@ double velocity_Y::operator()(double x, double y) const
 
 ````
 
-And the initial condition can be found in the file `XyFunction_Fun.cpp"
+And the initial condition for the above simulations can be found in the file `XyFunction_Fun.cpp`
 
 
 
