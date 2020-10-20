@@ -82,7 +82,7 @@ I tried to make an advection simulation where we can turn a moth (at far as I co
 
 ![MothToBurningPhoenix.gif](https://media.giphy.com/media/0ZKVtIJZvFapbJMriu/giphy.gif)
 
-[Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/n9p87lqpvca4jd8is31rd7ortd2fzs6w)
+[Moth to Burning Phoenix Simulation Video (Downloadable)](https://ucmerced.box.com/s/n9p87lqpvca4jd8is31rd7ortd2fzs6w)
 
 
 Here is the vector field I used (I used `rand()` to add stochasticity which looks like a burning effect):
@@ -101,6 +101,5 @@ double velocity_Y::operator()(double x, double y) const
 
 ````
 
-And the initial condition for the above simulations can be found in the file `XyFunction_Fun.cpp`
-
+And the initial condition for the above simulations can be found in the file `XYFunction_Fun.cpp`
 
