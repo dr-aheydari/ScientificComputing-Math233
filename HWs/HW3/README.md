@@ -77,7 +77,7 @@ This simulation can show the effect of reinitialization both on the level set fu
 ![3DLvlSet Sim GIF](https://media.giphy.com/media/GVoXsfbhSFVd0lMhww/giphy.gif)
 
 
-[3DLvlSet Sim Video](https://ucmerced.box.com/s/c2byx8tmfcz4l5qql0sxuxzzu27ehwr3)
+[3D LevelSet Simulation Video (Downloadable)](https://ucmerced.box.com/s/c2byx8tmfcz4l5qql0sxuxzzu27ehwr3)
 
 
 ### The Contour Plots
