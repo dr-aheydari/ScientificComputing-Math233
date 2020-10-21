@@ -1,3 +1,6 @@
+![3DLvlSet Sim GIF](https://media.giphy.com/media/GVoXsfbhSFVd0lMhww/giphy.gif)
+
+
 # HW3: Simulating Simple Advection in 2D with Semi-Lagrangian and LevelSets
 This repository will host my code for solving 2D advection equation using Semi-Lagrangian method, and also using Level Sets with reinitialization. This repository is meant to accompany my LaTeX write-up turned in online. Please be sure to ask permission/cite this work if you use this for any graded assignment. 
 
@@ -72,6 +75,8 @@ This simulation can show the effect of reinitialization both on the level set fu
 
 
 ![3DLvlSet Sim GIF](https://media.giphy.com/media/GVoXsfbhSFVd0lMhww/giphy.gif)
+
+
 [3DLvlSet Sim Video](https://ucmerced.box.com/s/c2byx8tmfcz4l5qql0sxuxzzu27ehwr3)
 
 
