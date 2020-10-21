@@ -67,6 +67,12 @@ We plot the gradients of the reinitialized function at every iteration, and comp
 
 [Gradient Plots Video (Downloadable)](https://ucmerced.box.com/s/568fr7rcbmxjx9syqr45k1dz2sa71rzt)
 
+### 3D LevelSet Function and Gradients Plot
+This simulation can show the effect of reinitialization both on the level set funnction and the gradients. Compare the reinitialized level set (on the left) with the deformed one (on the right) that does not have any reinitialization.
+
+
+![3DLvlSet Sim GIF](https://media.giphy.com/media/GVoXsfbhSFVd0lMhww/giphy.gif)
+[3DLvlSet Sim Video](https://ucmerced.box.com/s/c2byx8tmfcz4l5qql0sxuxzzu27ehwr3)
 
 
 ### The Contour Plots
@@ -78,7 +84,7 @@ We plot the gradients of the reinitialized function at every iteration, and comp
 
 ## Extra Credit: Creative Advection
 
-I tried to make an advection simulation where we can turn a moth (at far as I could get it to look like it) turn into a burning phoenix (you have to be imaginative to see it). Here is the result: 
+I tried to make an advection simulation where we can turn a moth (at far as I could get it to look like it) turn into a burning phoenix (you have to be imaginative to see it). The burning effect in the simulation is on purpose and it is possible by introducing stochasticity in the vector fields. Here is the result: 
 
 ![MothToBurningPhoenix.gif](https://media.giphy.com/media/0ZKVtIJZvFapbJMriu/giphy.gif)
 
