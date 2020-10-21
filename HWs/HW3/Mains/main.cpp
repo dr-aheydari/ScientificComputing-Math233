@@ -21,7 +21,7 @@ int main()
     velocity_Y y_vfield;
 
     // create a square grid [-1,1]^2
-    Grid2D my_grid(N_x,N_y,-7,7,-7,7);
+    Grid2D my_grid(N_x,N_y,-1,1,-1,1);
     std::cout<<"grid resolution in x :"<<my_grid.get_dx()<<std::endl;
     std::cout<<"grid resolution in y :"<<my_grid.get_dy()<<std::endl;
 
@@ -30,12 +30,12 @@ int main()
     std::vector<double> IC = init_cond.Assign();
 
     double t = 0.;
-    double tmax = 8*acos(0.0);
+    double tmax = 4*acos(0.0);
     /* for convergence analysis in space we need this dt
     //double dt = std::pow(my_grid.get_dx(),2);
     */
     double dx = my_grid.get_dx();
-    double dt = 0.5 * dx;
+    double dt = dx;
 //    double dt = (1./10) * my_grid.get_dx();
     std::cout<<"dt :"<< dt << std::endl;
     int counter = 0;
@@ -121,14 +121,18 @@ int main()
        SemiLagrangian advection(my_grid,IC, x_vfield, y_vfield, dt);
        t= 0;
        counter = 0;
-       LevelSet ls_nodes(my_grid,IC , (0.1*dx)/10);
+       LevelSet ls_nodes(my_grid,IC , dx/10);
 //       ls_nodes.Assign_ls();
        std::vector<double> ls_func(N_x,N_y);
 
        while (t < tmax)
        {
            char name[250];
-           sprintf(name,"/Users/aliheydari/Box/Course Material/Fall 2020/Scientific Computing/VTK_Sims/HW3/LevelSetTests/N=%i,t=%i.vtk",N_x,counter);
+           // without reinit
+//           sprintf(name,"/Users/aliheydari/Box/Course Material/Fall 2020/Scientific Computing/VTK_Sims/HW3/LevelSetTests/N=%i,t=%i.vtk",N_x,counter);
+           // with reinit
+           sprintf(name,"/Users/aliheydari/Box/Course Material/Fall 2020/Scientific Computing/VTK_Sims/HW3/LevelSetTests/Reinit_N=%i,t=%i.vtk",N_x,counter);
+
            my_grid.initialize_VTK_file(name);
            if (t == 0)
               ls_func = IC;
@@ -137,9 +141,10 @@ int main()
                // advect the solution
                ls_func = advection.LS_Solve(ls_func);
                // set this advection as the level_set function
+               ls_nodes.set_level_set_0(ls_func);
                ls_nodes.set_level_set_n(ls_func);
                // reinitialize the solution
-               ls_nodes.reinitialize(20);
+               ls_nodes.reinitialize(10);
                // get the reinitialized function as the solution
                ls_func = ls_nodes.get_level_set_n();
            }

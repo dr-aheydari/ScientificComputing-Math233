@@ -11,7 +11,7 @@ int sgn(T val)
 }
 
 
-LevelSet::LevelSet(const Grid2D& grid, const std::vector<double> Init_cond, double dt_)
+LevelSet::LevelSet(const Grid2D& grid, const std::vector<double> Init_cond, double dtau_)
 {
     my_grid = grid;
     N_x = my_grid.get_N();
@@ -19,7 +19,8 @@ LevelSet::LevelSet(const Grid2D& grid, const std::vector<double> Init_cond, doub
     level_set_0.resize(N_x * N_y);
     level_set_0 = Init_cond;
     level_set_n.resize(N_x * N_y);
-    dt = dt_;
+    dtau = dtau_;
+    tolerance = my_grid.get_dx() * 0.01;
 }
 
 
@@ -57,6 +58,7 @@ void LevelSet::Perturb_ls(double pertubation)
 
 }
 
+
 std::vector<double> LevelSet::get_level_set_n() const
 {
     return level_set_n;
@@ -67,6 +69,13 @@ void LevelSet::set_level_set_n(std::vector<double> new_level_set)
 {
     level_set_n = new_level_set;
 }
+
+
+void LevelSet::set_level_set_0(std::vector<double> new_level_set)
+{
+    level_set_0 = new_level_set;
+}
+
 
 
 std::vector<double> LevelSet::Reinitialize()
@@ -87,13 +96,17 @@ std::vector<double> LevelSet::Reinitialize()
             double dy_p = my_grid.dy_forward(level_set_n, n);
 
             double phi_0 = level_set_0[n];
+            double sgn;
             // check for sign of Phi0
-            double sgn = (phi_0 > 0) ? 1:-1;
+            if (phi_0 < tolerance)
+                sgn = 0;
+            else
+                sgn = (phi_0 > 0) ? 1:-1;
             // check which derivative we should use
             double dx = Godunov_Check(sgn, dx_p, dx_m);
             double dy = Godunov_Check(sgn, dy_p, dy_m);
 
-           level_set_np1[n] = level_set_n[n] + dt*sgn*(1 - sqrt(std::pow(dx,2)+std::pow(dy,2)));
+           level_set_np1[n] = level_set_n[n] + dtau*sgn*(1 - sqrt(std::pow(dx,2)+std::pow(dy,2)));
         }
 
     return level_set_np1;
