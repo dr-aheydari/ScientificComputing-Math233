@@ -13,7 +13,7 @@ This folder includes the files for "homeworks" turned in, either in parts or ful
 Contains all labs for the course, either in parts or complete (marked at the end of each script with `#Par` or `#Fin`, respectively)
 
 ### Projects: 
-Includes the final project for the course, which is about smart batching of data in deep learning via `CUDA` on multiple GPUs (more details to come in the near future)
+Includes the final project for the course, which is our *mass-conservative finite-volumes* method for evolving geometries.
 
 ## Usage: 
 
