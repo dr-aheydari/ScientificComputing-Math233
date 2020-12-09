@@ -1,6 +1,6 @@
 # A Mass-Conservative Finite-Volumes Scheme for Evolving Geometries 
 
-*A diffusion-reaction system for a budding yeast to study the mass-conservation convergence of our method *
+*A diffusion-reaction system for a budding yeast to study the mass-conservation convergence of our method*
 ![3DSplittingYeastCells](https://media.giphy.com/media/qq9Gix8DnTe0GAR7T8/giphy.gif)
 
 
