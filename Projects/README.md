@@ -1,3 +1,12 @@
-# Projects
+# A Mass-Conservative Finite-Volumes Scheme for Evolving Geometries 
 
-This folder will host the code for the projects in this class
+*A diffusion-reaction system for a budding yeast to study the mass-conservation convergence of our method *
+![3DSplittingYeastCells](https://media.giphy.com/media/qq9Gix8DnTe0GAR7T8/giphy.gif)
+
+
+*Expanding sphere for the diffusion equation for a known problem to study our method's convergence in time and space*
+![3DExpandingSphere](https://media.giphy.com/media/YPrm7f3cHO5pDxxdsr/giphy.gif)
+
+
+## Code:
+The main code that adds the mass-conservative (MCFV-G) modification to the traditional Finite-Volumes is included. The main solvers behind the scenes are not provided due to the propritery nature of the libraries. However, one should be able to implement the mass
