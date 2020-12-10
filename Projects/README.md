@@ -15,7 +15,7 @@ The main code that adds the mass-conservative (MCFV-G) modification to the tradi
 ## Project Description:
 
 ### Slides:
-A brief presentation of our method can be found [here](https://merced-my.sharepoint.com/:p:/g/personal/aheydari_ucmerced_edu/EWq-2_Yi0-1CrqBWU8isdyAB6rO6feVC4EzpiEC_1ThOiA?e=3p6RNE)
+A brief presentation of our method can be found [here](https://merced-my.sharepoint.com/:p:/g/personal/aheydari_ucmerced_edu/EZj435zOaf5PqNHKJbWLXFYBwfjB1jsLoT8e0Wz-5xk7Jw?e=p9hWiG)
 
 ### Report 
 A complementary report (to the presented slides) can be found [here](https://ucmerced.box.com/s/mef9bvhpj2kp47aodjx0dk66q1cx58be)
