@@ -9,7 +9,7 @@
 
 
 ## Code:
-The main code that adds the mass-conservative (MCFV-G) modification to the traditional Finite-Volumes is included. The main solvers behind the scenes are not provided due to the propritery nature of the libraries. However, one should be able to implement the mass
+The main code that adds the mass-conservative (MCFV) modification to the traditional Finite-Volumes is included. The main solvers behind the scenes are not provided due to the propritery nature of the libraries. However, one should be able to implement the mass
 
 
 ## Project Description:
