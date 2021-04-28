@@ -7,7 +7,7 @@ Step 2: Configure
 
 Run: 
 ````
-./Configure prefix = <DIRECTORY/FOR/INSTALLATION> --with-clanguage=cxx --download-hypre=1 --download-f2cblaslapack=1 --download-mpich=1` with possibly these 
+./Configure prefix = <DIRECTORY/FOR/INSTALLATION> --with-clanguage=cxx --download-hypre=1 --download-f2cblaslapack=1 --download-mpich=1
 ````
 Note: the installation directory (i.e. `prefix` arg) can not be the same as the downloaded directory!
 
