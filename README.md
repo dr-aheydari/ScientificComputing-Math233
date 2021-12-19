@@ -17,7 +17,7 @@ Includes the final project for the course, which is our *mass-conservative finit
 
 ## Usage: 
 
-This repository may contain material that have been turned-in as an assignment or project for the purposes of course completion or research project, which means contents used from this repo could be considered as plagirism. 
+This repository may contain material that have been turned-in as assignments for the purposes of course completion (or used in my research), which means reusing contents from this repo without citations could be considered plagirism. 
 
 ## Contact Info:
 
